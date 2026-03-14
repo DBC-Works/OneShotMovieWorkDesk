@@ -1,12 +1,7 @@
 /**
- * Abstract color name
+ * Abstract color value
  */
-public abstract class ColorName {
-  /**
-   * Name
-   */
-  private final String name;
-
+public abstract class ColorValue {
   /**
    * Red(0 - 255)
    */
@@ -24,24 +19,14 @@ public abstract class ColorName {
 
   /**
    * Constructor
-   * @param n name
    * @param r red([0,255])
    * @param g green([0,255])
    * @param b blue([0,255])
    */
-  protected ColorName(final String n, final int r, final int g, final int b) {
-    name = n;
+  protected ColorValue(final int r, final int g, final int b) {
     red = r;
     green = g;
     blue = b;
-  }
-
-  /**
-   * Get name
-   * @return name
-   */
-  public final String getName() {
-    return name;
   }
 
   /**
@@ -129,7 +114,7 @@ public abstract class ColorName {
 
   @Override
   public String toString() {
-    return String.format("%s(%d, %d, %d)", name, red, green, blue);
+    return String.format("(%d, %d, %d)", red, green, blue);
   }
 
   private int getMax() {
