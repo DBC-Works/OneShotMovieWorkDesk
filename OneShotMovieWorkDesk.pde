@@ -1,6 +1,7 @@
 import java.io.FileFilter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Iterator;
 import java.util.concurrent.Executors;
@@ -50,7 +51,7 @@ private int calcLengthFromSoundFile() {
 }
 
 private int getTotalFrameCount(int min, int sec, int fr) {
-  assert min <= 0 && sec <= 0 && fr <= 0;
+  assert 0 <= min && 0 <= sec && 0 <= fr;
 
   return ((min * 60) + sec) * maker.getExpectedFrameRate() + fr;
 }
@@ -69,10 +70,12 @@ float getProgress() {
   return frameCount / (float)getLength();
 }
 
-void settings() {
+void setup() {
+  size(640, 640, P3D);
+
   // TODO: Set frame maker
   maker = new FrameMakerCreator().createSampleMaker();
-  secondsAfterEnd = 2;
+  secondsAfterEnd = 2f;
 
   // TODO: Set setting variables
   // soundFilePath = "(Write absolute file path of sound file here and enable this line)";
@@ -95,18 +98,15 @@ void settings() {
     soundFile.play();
   }
 
-  pixelDensity(1);
   final var screenSize = maker.getScreenSize();
-  size(screenSize.getWidth(), screenSize.getHeight(), maker.getRenderer());
+  surface.setSize(screenSize.getWidth(), screenSize.getHeight());
+  pixelDensity(1);
+  maker.setup();
+  smooth();
+  frameRate(maker.getExpectedFrameRate());
 }
 
 void draw() {
-  if (frameCount <= 1) {
-    maker.setup();
-    frameRate(maker.getExpectedFrameRate());
-    smooth();
-  }
-
   if (frameRate <= (maker.getExpectedFrameRate() - 1)) {
     println("(frame dropped at " + frameCount + "(frameRate=" + frameRate + "))");
   }
