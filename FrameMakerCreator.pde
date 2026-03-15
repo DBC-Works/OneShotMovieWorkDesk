@@ -36,12 +36,18 @@ final class FrameMakerCreator {
             );
           })
           .forEach((x) -> {
-            stroke(x.get(0), x.get(1), 1, 1.0/3);
+            stroke(x.get(0), x.get(1), 1, 1.0 / 3);
             rotate(.05);
             strokeWeight(4);
-            circle(H * x.get(2), H * x.get(3), H / x.get(4));
+            Visualizer.CIRCLE.realize(
+              OneShotMovieWorkDesk.this,
+              List.of(H * x.get(2), H * x.get(3), H / x.get(4))
+            );
             strokeWeight(1);
-            circle(H * x.get(2), H * x.get(3), H / x.get(4));
+            Visualizer.CIRCLE.realize(
+              OneShotMovieWorkDesk.this,
+              List.of(H * x.get(2), H * x.get(3), H / x.get(4))
+            );
             t += .000005;
           });
       }

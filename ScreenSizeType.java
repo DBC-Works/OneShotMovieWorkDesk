@@ -8,6 +8,11 @@ public enum ScreenSizeType {
   FOUR_K(3840, 2160),
 
   /**
+   * 2.5K(2560x1600)
+   */
+  TWO_HALF_K(2560, 1600),
+
+  /**
    * WQHD(2560x1440)
    */
   WQHD(2560, 1440),
