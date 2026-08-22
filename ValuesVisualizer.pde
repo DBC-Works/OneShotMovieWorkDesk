@@ -81,6 +81,61 @@ public enum Visualizer implements Realizer {
       applet.circle(0f, 0f, it.next());
       return it;
     }
+  },
+
+  /**
+   * SPHERE: radius
+   */
+  SPHERE() {
+    public Iterator<Float> realize(PApplet applet, Iterator<Float> it) {
+      assert it.hasNext();
+
+      applet.sphere(it.next());
+      return it;
+    }
+  },
+
+  /**
+   * TETRAHEDRON: radius
+   */
+  TETRAHEDRON() {
+    public Iterator<Float> realize(PApplet applet, Iterator<Float> it) {
+      assert it.hasNext();
+      final var a = it.next();
+
+      applet.beginShape(TRIANGLES);
+      applet.vertex(a, a, a);
+      applet.vertex(-a, a, -a);
+      applet.vertex(a, -a, -a);
+      applet.vertex(a, a, a);
+      applet.vertex(a, -a, -a);
+      applet.vertex(-a, -a, a);
+      applet.vertex(a, a, a);
+      applet.vertex(-a, -a, a);
+      applet.vertex(-a, a, -a);
+      applet.vertex(a, -a, -a);
+      applet.vertex(-a, -a, a);
+      applet.vertex(-a, a, -a);
+      applet.endShape();
+
+      return it;
+    }
+  },
+
+
+  /**
+   * BOX: width[, height[, depth]]
+   */
+  BOX() {
+    public Iterator<Float> realize(PApplet applet, Iterator<Float> it) {
+      assert it.hasNext();
+
+      final var w = it.next();
+      final var h = it.hasNext() ? it.next() : w;
+      final var d = it.hasNext() ? it.next() : h;
+      applet.box(w, h, d);
+      return it;
+    }
   };
 
   /**

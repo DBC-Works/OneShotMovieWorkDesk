@@ -2,12 +2,14 @@
  * HTML color value
  */
 public final class HtmlColorValue extends NamedColorValue {
+  public static final ColorValue CRIMSON = new HtmlColorValue("crimson", 220, 20, 60);
   public static final ColorValue DARK_RED = new HtmlColorValue("dark red", 139, 0, 0);
+  public static final ColorValue DARK_SLATE_BLUE = new HtmlColorValue("dark slate blue", 72, 61, 139);
   public static final ColorValue DODGER_BLUE = new HtmlColorValue("dodger blue", 30, 144, 255);
   public static final ColorValue GHOST_WHITE = new HtmlColorValue("ghost white", 248, 248, 255);
   public static final ColorValue MAROON = new HtmlColorValue("maroon", 128, 0, 0);
+  public static final ColorValue NAVY = new HtmlColorValue("navy", 0, 0, 128);
   public static final ColorValue MIDNIGHT_BLUE = new HtmlColorValue("midnight blue", 25, 25, 112);
-  public static final ColorValue CRIMSON = new HtmlColorValue("crimson", 220, 20, 60);
 
   /**
    * Constructor
